@@ -7,6 +7,10 @@ namespace TaskWeb_2.Employees
 {
     public class ListEmployees
     {
-        List<EmployeesModel> List{ get; set; }
+       public List<EmployeesModel> List{ get; set; }
+       public ListEmployees()
+       {
+            List = new List<EmployeesModel>();
+       }
     }
 }

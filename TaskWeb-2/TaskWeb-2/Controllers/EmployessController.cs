@@ -12,14 +12,20 @@ namespace TaskWeb_2.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
+        private readonly ListEmployees _employees;
+        public EmployeesController(ListEmployees employees)
+        {
+            _employees = employees;
+        }
         [HttpGet("get")]
         public IActionResult GetEmployees()
         {
-            return Ok();
+            return Ok(_employees.List);
         }
         [HttpPost("add")]
         public IActionResult AddEmployeess([FromBody] EmployeesModel employer)
         {
+            _employees.List.Add(employer);
             return Ok();
         }
         [HttpDelete("delete")]
