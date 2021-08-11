@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskWeb_2.Customers;
+using TaskWeb_2.Employees;
 
 namespace TaskWeb_2
 {
@@ -28,6 +30,10 @@ namespace TaskWeb_2
         {
 
             services.AddControllers();
+            services.AddSingleton<CustomerModel>();
+            services.AddSingleton<EmployeesModel>();
+            services.AddSingleton<ListCustomers>();
+            services.AddSingleton<ListEmployees>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskWeb_2", Version = "v1" });
