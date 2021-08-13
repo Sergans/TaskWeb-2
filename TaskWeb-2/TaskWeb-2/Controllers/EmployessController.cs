@@ -29,14 +29,33 @@ namespace TaskWeb_2.Controllers
             return Ok();
         }
         [HttpDelete("delete")]
-        public IActionResult DelEmployees(int id)
+        public IActionResult DelEmployees([FromQuery] int id)
         {
-            return Ok();
+
+            foreach (var empl  in _employees.List)
+            {
+                if (empl.Id == id)
+                {
+                    _employees.List.Remove(empl);
+                    return Ok(_employees.List);
+                }
+            }
+
+            return Ok(_employees.List);
         }
         [HttpPut("put")]
-        public IActionResult PutEmployees(int id)
+        public IActionResult PutEmployees([FromQuery] int id, [FromQuery] string name, [FromQuery] int hours)
         {
-            return Ok();
+            foreach (var empl in _employees.List)
+            {
+                if (empl.Id == id)
+                {
+                    empl.Name=name;
+                    empl.Hours = hours;
+                    return Ok(_employees.List);
+                }
+            }
+            return Ok(_employees.List);
         }
     }
 
