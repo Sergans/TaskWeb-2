@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskWeb_2.DAL.Contracts;
 
 namespace TaskWeb_2.DAL
 {
    public interface IService 
    {
-        public void Create();
-        public List<ContractModel> AllGet();
+        public void Create(ContractModel contract);
+        //public List<ContractModel> AllGet();
         public ContractModel Info(int idcontract);
         public void UpDateContract(int idcontract);
         public void DeleteContract(int idcontract);
    }
-    public class Servise : IService
+    public class Service : IService
     {
-        public List<ContractModel> AllGet()
-        {
-            throw new NotImplementedException();
-        }
+        //public List<ContractModel> AllGet()
+        //{
+        //   return
+        //}
 
-        public void Create()
+        public void Create(ContractModel contract)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void DeleteContract(int idcontract)

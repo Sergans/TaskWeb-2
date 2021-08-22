@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskWeb_2.DAL;
+using TaskWeb_2.DAL.Contracts;
+
+
 
 namespace TaskWeb_2.Controllers
 {
@@ -11,14 +15,23 @@ namespace TaskWeb_2.Controllers
     [ApiController]
     public class Contract : ControllerBase
     {
+        private readonly Service _service;
+        private readonly ContractsList _contract;
+        public Contract(Service servise, ContractsList contract)
+        {
+            _contract = contract;
+            _service = servise;
+        }
         [HttpGet("get")]
         public IActionResult Get()
         {
-            return Ok();
+           
+            return Ok(_contract.DateBase);
         }
         [HttpPost("create")]
-        public IActionResult Create()
+        public IActionResult Create([FromBody] ContractModel contract)
         {
+            _contract.DateBase.Add(contract);
             return Ok();
         }
         [HttpDelete("delete")]
