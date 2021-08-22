@@ -31,7 +31,7 @@ namespace TaskWeb_2
 
             services.AddControllers();
             services.AddSingleton<CustomerModel>();
-            services.AddSingleton<EmployeesModel>();
+            services.AddSingleton<EmployessModel>();
             services.AddSingleton<ListCustomers>();
             services.AddSingleton<ListEmployees>();
             services.AddSwaggerGen(c =>

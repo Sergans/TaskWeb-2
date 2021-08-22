@@ -7,9 +7,29 @@ using System.Threading.Tasks;
 
 namespace TaskWeb_2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/service")]
     [ApiController]
     public class Contract : ControllerBase
     {
+        [HttpGet("get")]
+        public IActionResult Get()
+        {
+            return Ok();
+        }
+        [HttpPost("create")]
+        public IActionResult Create()
+        {
+            return Ok();
+        }
+        [HttpDelete("delete")]
+        public IActionResult Delete()
+        {
+            return Ok();
+        }
+        [HttpPut("edit")]
+        public IActionResult Rename()
+        {
+            return Ok();
+        }
     }
 }

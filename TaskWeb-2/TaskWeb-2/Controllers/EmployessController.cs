@@ -23,7 +23,7 @@ namespace TaskWeb_2.Controllers
             return Ok(_employees.List);
         }
         [HttpPost("add")]
-        public IActionResult AddEmployeess([FromBody] EmployeesModel employer)
+        public IActionResult AddEmployeess([FromBody] EmployessModel employer)
         {
             _employees.List.Add(employer);
             return Ok();
