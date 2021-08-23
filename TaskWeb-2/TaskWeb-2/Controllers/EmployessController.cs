@@ -64,12 +64,12 @@ namespace TaskWeb_2.Controllers
             return Ok();
         }
         [HttpPost("order")]
-        public IActionResult AddOrderTask([FromQuery] int id, [FromQuery] DateTime date, [FromQuery] int hours)
+        public IActionResult AddOrderTask([FromQuery] int idemployer,[FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
           
-        { var order = new TaskModel { IdContract = id, Date = date, Hours = hours }; 
+        { var order = new TaskModel {IdEmployer=idemployer,IdContract=idcontract , Date = date, Hours = hours }; 
            foreach(var contract in _contract.DateBase)
             {
-                if (contract.Id == id)
+                if (contract.Id == idcontract)
                 {
                     contract.Order.Add(order);
                 }
