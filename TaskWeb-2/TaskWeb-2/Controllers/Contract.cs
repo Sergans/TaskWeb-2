@@ -44,5 +44,22 @@ namespace TaskWeb_2.Controllers
         {
             return Ok();
         }
+        [HttpGet("invoice")]
+        public IActionResult GetInvoice([FromQuery]int idcontract,[FromQuery]decimal bet)
+        {
+            decimal sum = 0;
+            foreach (var contract in _contract.DateBase)
+            {
+                if (contract.Id == idcontract)
+                {
+
+                    foreach (var order in contract.Order)
+                    {
+                        sum +=order.Hours;
+                    }
+                }
+            }
+            return Ok(sum*bet);
+        }
     }
 }
