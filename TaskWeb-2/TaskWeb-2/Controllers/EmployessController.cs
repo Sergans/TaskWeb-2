@@ -8,6 +8,7 @@ using TaskWeb_2.Employees;
 using TaskWeb_2.DAL;
 using TaskWeb_2.Models;
 using TaskWeb_2.DAL.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace TaskWeb_2.Controllers
@@ -26,11 +27,16 @@ namespace TaskWeb_2.Controllers
         [HttpGet("get")]
         public IActionResult GetEmployees()
         {
+            //ContactSQL empl = new ContactSQL();
+           // return Ok(empl.Employess.ToList());
             return Ok(_employees.DataBaseEmployess);
         }
         [HttpPost("add")]
         public IActionResult AddEmployeess([FromBody] EmployessModel employer)
         {
+            ContactSQL empl  = new ContactSQL();
+            //empl.Employess.Add(employer);
+            //empl.SaveChanges();
             _employees.DataBaseEmployess.Add(employer);
             return Ok();
         }

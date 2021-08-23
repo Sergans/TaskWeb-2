@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TaskWeb_2.Employees;
 
 
 namespace TaskWeb_2.DAL
@@ -10,6 +11,7 @@ namespace TaskWeb_2.DAL
     public class ContactSQL : DbContext
     {
         public DbSet<ContractModel> Contract { get; set; }
+        //public DbSet<EmployessModel> Employess { get; set; }
         public ContactSQL()
         {
             Database.EnsureCreated();

@@ -42,6 +42,8 @@ namespace TaskWeb_2.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete()
         {
+            ContactSQL contact = new ContactSQL();
+            
             return Ok();
         }
         [HttpPut("edit")]
