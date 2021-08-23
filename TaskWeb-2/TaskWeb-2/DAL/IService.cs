@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskWeb_2.DAL.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskWeb_2.DAL
 {

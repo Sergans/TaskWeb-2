@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskWeb_2.DAL;
 using TaskWeb_2.DAL.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -25,13 +26,17 @@ namespace TaskWeb_2.Controllers
         [HttpGet("get")]
         public IActionResult Get()
         {
-           
-            return Ok(_contract.DateBase);
+            ContactSQL contact = new ContactSQL();
+            //contact.Contract.ToList();
+            return Ok(contact.Contract.ToList());
         }
         [HttpPost("create")]
         public IActionResult Create([FromBody] ContractModel contract)
         {
-            _contract.DateBase.Add(contract);
+            ContactSQL contact = new ContactSQL();
+            contact.Contract.Add(contract);
+            contact.SaveChanges();
+           // _contract.DateBase.Add(contract);
             return Ok();
         }
         [HttpDelete("delete")]
@@ -53,10 +58,10 @@ namespace TaskWeb_2.Controllers
                 if (contract.Id == idcontract)
                 {
 
-                    foreach (var order in contract.Order)
-                    {
-                        sum +=order.Hours;
-                    }
+                    //foreach (var order in contract.Order)
+                    //{
+                    //    sum +=order.Hours;
+                    //}
                 }
             }
             return Ok(sum*bet);

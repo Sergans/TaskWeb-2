@@ -71,7 +71,7 @@ namespace TaskWeb_2.Controllers
             {
                 if (contract.Id == idcontract)
                 {
-                    contract.Order.Add(order);
+                  //  contract.Order.Add(order);
                 }
             }
             return Ok();
