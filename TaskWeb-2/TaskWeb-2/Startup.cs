@@ -36,6 +36,7 @@ namespace TaskWeb_2
             services.AddSingleton<EmployessModel>();
             services.AddSingleton<ContractModel>();
             services.AddSingleton<ContractsList>();
+            services.AddSingleton<EmployessList>();
             services.AddSingleton<Service>();
 
             services.AddSwaggerGen(c =>

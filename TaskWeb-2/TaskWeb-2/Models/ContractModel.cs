@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskWeb_2.Customers;
 using TaskWeb_2.Employees;
+using TaskWeb_2.Models;
+
 
 namespace TaskWeb_2.DAL
 {
@@ -14,6 +16,7 @@ namespace TaskWeb_2.DAL
         public DateTime DateClose { get; set; }
         public CustomerModel Customer { get; set; }
         public List<EmployessModel> Employess { get; set; }
+        public List<TaskModel> Order { get; set; }
         public bool Status { get; set; }
         public decimal Sum { get; set; }
 

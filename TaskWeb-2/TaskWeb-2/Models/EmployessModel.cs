@@ -9,6 +9,6 @@ namespace TaskWeb_2.Employees
     {
         public int Id { get; set; }
         public string Name { get; set; }//Имя сотрудника
-        public int Hours { get; set; }//Рабочие часы
+        
     }
 }
