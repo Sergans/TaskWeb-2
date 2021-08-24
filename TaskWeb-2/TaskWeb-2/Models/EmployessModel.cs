@@ -8,7 +8,7 @@ namespace TaskWeb_2.Employees
     public class EmployessModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }//Имя сотрудника
-        
+        public string FirstName { get; set; }//Имя сотрудника
+        public string LastName { get; set; }
     }
 }

@@ -26,14 +26,14 @@ namespace TaskWeb_2.Controllers
         [HttpGet("get")]
         public IActionResult Get()
         {
-            ContactSQL contact = new ContactSQL();
+            ContractSQL contact = new ContractSQL();
             //contact.Contract.ToList();
             return Ok(contact.Contract.ToList());
         }
         [HttpPost("create")]
         public IActionResult Create([FromBody] ContractModel contract)
         {
-            ContactSQL contact = new ContactSQL();
+            ContractSQL contact = new ContractSQL();
             contact.Contract.Add(contract);
             contact.SaveChanges();
            // _contract.DateBase.Add(contract);
@@ -42,7 +42,7 @@ namespace TaskWeb_2.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete()
         {
-            ContactSQL contact = new ContactSQL();
+            ContractSQL contact = new ContractSQL();
             
             return Ok();
         }

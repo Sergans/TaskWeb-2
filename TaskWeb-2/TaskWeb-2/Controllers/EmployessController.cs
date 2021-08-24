@@ -34,7 +34,7 @@ namespace TaskWeb_2.Controllers
         [HttpPost("add")]
         public IActionResult AddEmployeess([FromBody] EmployessModel employer)
         {
-            ContactSQL empl  = new ContactSQL();
+           
             //empl.Employess.Add(employer);
             //empl.SaveChanges();
             _employees.DataBaseEmployess.Add(employer);
