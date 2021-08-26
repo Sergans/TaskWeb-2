@@ -15,8 +15,7 @@ namespace TaskWeb_2.DAL
         public DateTime DateCreate { get; set; }
         public DateTime DateClose { get; set; }
         public CustomerModel Customer { get; set; }
-       // public List<EmployessModel> Employess { get; set; }
-       // public List<TaskModel> Order { get; set; }
+        public decimal Sum { get; set; }
         public bool Status { get; set; }
         
     }
