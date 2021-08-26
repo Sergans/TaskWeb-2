@@ -34,7 +34,7 @@ namespace TaskWeb_2.Controllers
             return Ok();
         }
         [HttpGet("invoice")]
-        public IActionResult GetInvoice()
+        public IActionResult GetInvoice([FromQuery]DateTime from,[FromQuery]DateTime to,[FromQuery]int idcontract)
         {
             return Ok();
         }
