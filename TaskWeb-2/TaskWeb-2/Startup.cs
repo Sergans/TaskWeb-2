@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TaskWeb_2.Customers;
 using TaskWeb_2.Employees;
-//using TaskWeb_2.DAL.Contracts;
+
 using TaskWeb_2.DAL;
 
 namespace TaskWeb_2
@@ -35,9 +35,10 @@ namespace TaskWeb_2
             services.AddSingleton<CustomerModel>();
             services.AddSingleton<EmployessModel>();
             services.AddSingleton<ContractModel>();
-            //services.AddSingleton<ContractsList>();
-           // services.AddSingleton<EmployessList>();
-            services.AddSingleton<Service>();
+            services.AddSingleton<EmployesService>();
+            services.AddSingleton<ContractService>();
+            services.AddSingleton<CustomerService>();
+            services.AddSingleton<TaskService>();
 
             services.AddSwaggerGen(c =>
             {

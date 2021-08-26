@@ -4,31 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TaskWeb_2.Customers;
 using TaskWeb_2.Employees;
 using TaskWeb_2.DAL;
 using TaskWeb_2.Models;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace TaskWeb_2.Controllers
 {
-    [Route("api/customer")]
+    [Route("api/service")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class ContractController : ControllerBase
     {
-        private readonly IRepository<CustomerModel> _repository;
-        public CustomerController(CustomerService repository)
+        private readonly IRepository<ContractModel> _repository;
+        public ContractController(ContractService repository)
         {
             _repository = repository;
         }
         [HttpGet("get")]
-        public IActionResult GetCustomer()
+        public IActionResult GetController()
         {
             return Ok(_repository.AllGet());
         }
         [HttpPost("add")]
-        public IActionResult AddCustomer([FromBody] CustomerModel customer)
+        public IActionResult AddCustomer([FromBody] ContractModel contract)
         {
-            _repository.Create(customer);
+            _repository.Create(contract);
             return Ok();
         }
     }

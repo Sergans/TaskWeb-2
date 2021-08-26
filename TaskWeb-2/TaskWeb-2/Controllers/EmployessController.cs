@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TaskWeb_2.Employees;
 using TaskWeb_2.DAL;
 using TaskWeb_2.Models;
-//using TaskWeb_2.DAL.Contracts;
+
 using Microsoft.EntityFrameworkCore;
 
 
@@ -17,27 +17,20 @@ namespace TaskWeb_2.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        //private readonly EmployessList _employees;
-        //private readonly ContractsList _contract;
-        public EmployeesController()
+        private readonly IRepository<EmployessModel> _repository;
+        public EmployeesController(EmployesService repository)
         {
-            // _employees = employees;
-            // _contract = contract;
+            _repository = repository;
         }
         [HttpGet("get")]
         public IActionResult GetEmployees()
         {
-            EmployessSQL empl = new EmployessSQL();
-            return Ok(empl.Employes.ToList());
-           // return Ok();
+           return Ok(_repository.AllGet());
         }
         [HttpPost("add")]
         public IActionResult AddEmployeess([FromBody] EmployessModel employer)
         {
-            EmployessSQL empl = new EmployessSQL();
-            empl.Employes.Add(employer);
-            empl.SaveChanges();
-            // _employees.DataBaseEmployess.Add(employer);
+            _repository.Create(employer); 
             return Ok();
         }
         [HttpDelete("delete")]
@@ -73,7 +66,7 @@ namespace TaskWeb_2.Controllers
         public IActionResult AddOrderTask([FromQuery] int idemployer, [FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
           
         { var request = new TaskModel {IdEmployer=idemployer,IdContract=idcontract,Date=date, Hours = hours };
-            EmployessSQL empl = new EmployessSQL();
+            BaseSQL empl = new BaseSQL();
             empl.Order.Add(request);
             empl.SaveChanges();
             //   foreach(var contract in _contract.DateBase)
@@ -84,7 +77,15 @@ namespace TaskWeb_2.Controllers
             //        }
             //    }
             return Ok();
-    }
+        }
+        [HttpGet("gettask")]
+        public IActionResult GetTask()
+        {
+            BaseSQL empl = new BaseSQL();
+            return Ok(empl.Order.ToList());
+            // return Ok();
+        }
+
 
     }
 
