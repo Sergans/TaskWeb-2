@@ -33,5 +33,11 @@ namespace TaskWeb_2.Controllers
             _repository.Create(contract);
             return Ok();
         }
+        [HttpGet("invoice")]
+        public IActionResult GetInvoice()
+        {
+            return Ok();
+        }
+
     }
 }
