@@ -14,12 +14,16 @@ namespace TaskWeb_2.DAL
    {
         public void Create(T item);
         public List<T> AllGet();
+       // public int GetHours(DateTime fromTime,DateTime toTime,int idcontract);
+       // public int GetCost(int idcontract);
         //public ContractModel Info(int idcontract);
         //public void UpDateContract(int idcontract);
-       // public void DeleteContract(int idcontract);
-   }
+        // public void DeleteContract(int idcontract);
+    }
     public interface IContractService : IRepository<ContractModel>
     {
+        public int GetCost(int idcontract);
+        public CustomerModel GetCustomer(int idcontract);
 
     }
     public interface IEmployesService : IRepository<EmployessModel>
@@ -28,7 +32,7 @@ namespace TaskWeb_2.DAL
     }
     public interface ITaskService : IRepository<TaskModel>
     {
-
+        public int GetHours(DateTime fromTime, DateTime toTime, int idcontract);
     }
     public interface ICustomerService : IRepository<CustomerModel>
     {

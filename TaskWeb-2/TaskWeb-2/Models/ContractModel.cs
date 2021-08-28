@@ -14,8 +14,9 @@ namespace TaskWeb_2.DAL
         public int Id{get;set;}
         public DateTime DateCreate { get; set; }
         public DateTime DateClose { get; set; }
-        public CustomerModel Customer { get; set; }
-        public decimal Sum { get; set; }
+        public string CustomerFname { get; set; }
+        public string CustomerLname { get; set; }
+        public decimal Cost { get; set; }
         public bool Status { get; set; }
         
     }

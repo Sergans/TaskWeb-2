@@ -20,5 +20,24 @@ namespace TaskWeb_2.DAL
             task.Order.Add(item);
             task.SaveChanges();
         }
+
+        public int GetCost(int idcontract)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
+        {
+            int hours = 0;
+            BaseSQL task = new BaseSQL();
+            var taskperiod = (from period in task.Order where period.IdContract == idcontract select period).ToList();
+            foreach (var sum in taskperiod)
+            {
+                hours = hours + sum.Hours;
+            }
+            return hours;
+        }
+
+        
     }
 }

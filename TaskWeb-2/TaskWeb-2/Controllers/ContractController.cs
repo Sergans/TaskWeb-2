@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
+
 namespace TaskWeb_2.Controllers
 {
     [Route("api/service")]
@@ -18,9 +19,16 @@ namespace TaskWeb_2.Controllers
     public class ContractController : ControllerBase
     {
         private readonly IRepository<ContractModel> _repository;
-        public ContractController(ContractService repository)
+        private readonly IRepository<TaskModel> _repositoryTask;
+        private readonly IContractService _contrservice;
+        private readonly ITaskService _taskservice;
+        public ContractController(ContractService repository,TaskService repositorytask,ContractService contrserv,TaskService taskserv)
         {
+            _repositoryTask = repositorytask;
             _repository = repository;
+            _contrservice = contrserv;
+            _taskservice = taskserv;
+
         }
         [HttpGet("get")]
         public IActionResult GetController()
@@ -36,7 +44,13 @@ namespace TaskWeb_2.Controllers
         [HttpGet("invoice")]
         public IActionResult GetInvoice([FromQuery]DateTime from,[FromQuery]DateTime to,[FromQuery]int idcontract)
         {
-            return Ok();
+            
+            var hours = _taskservice.GetHours(from, to, idcontract);
+            var cost = _contrservice.GetCost(idcontract);
+            var sum = hours * cost;
+            var customer = _contrservice.GetCustomer(idcontract);
+            var invoice = new InvoiceModel() { Customer=customer,Sum=sum,DateCreate=from,DateClose=to};
+            return Ok(invoice);
         }
 
     }

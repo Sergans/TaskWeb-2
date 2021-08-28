@@ -21,5 +21,15 @@ namespace TaskWeb_2.DAL
             empl.Employes.Add(item);
             empl.SaveChanges();
         }
+
+        public int GetCost(int idcontract)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

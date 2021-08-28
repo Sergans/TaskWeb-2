@@ -36,16 +36,7 @@ namespace TaskWeb_2.Controllers
         [HttpDelete("delete")]
         public IActionResult DelEmployees([FromQuery] int id)
         {
-
-            //foreach (var empl in _employees.DataBaseEmployess)
-            //{
-            //    if (empl.Id == id)
-            //    {
-            //        _employees.DataBaseEmployess.Remove(empl);
-            //        return Ok(_employees.DataBaseEmployess);
-            //    }
-            //}
-
+           
             return Ok();
         }
         [HttpPut("put")]
@@ -69,13 +60,7 @@ namespace TaskWeb_2.Controllers
             BaseSQL empl = new BaseSQL();
             empl.Order.Add(request);
             empl.SaveChanges();
-            //   foreach(var contract in _contract.DateBase)
-            //    {
-            //        if (contract.Id == idcontract)
-            //        {
-            //          //  contract.Order.Add(order);
-            //        }
-            //    }
+            
             return Ok();
         }
         [HttpGet("gettask")]
