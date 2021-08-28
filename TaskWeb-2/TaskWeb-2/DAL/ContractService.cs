@@ -22,9 +22,18 @@ namespace TaskWeb_2.DAL
             contr.SaveChanges();
         }
 
-        public void Delete(int item)
+        public void Delete(int idcontract)
         {
-            throw new NotImplementedException();
+            BaseSQL contr = new BaseSQL();
+            foreach (var person in contr.Contract.ToList())
+            {
+                if (person.Id == idcontract)
+                {
+                    contr.Remove(person);
+                    contr.SaveChanges();
+                }
+
+            }
         }
 
         public int GetCost(int idcontract)
@@ -52,9 +61,10 @@ namespace TaskWeb_2.DAL
             return customer;
         }
 
-        public void UpData(int idcustomer, string fname, string lname)
+        public void UpData(int idcontract, string fname, string lname)
         {
-            throw new NotImplementedException();
+            BaseSQL contr = new BaseSQL();
+            
         }
     }
 }

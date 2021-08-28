@@ -42,15 +42,7 @@ namespace TaskWeb_2.Controllers
         [HttpPut("put")]
         public IActionResult PutEmployees([FromQuery] int id, [FromQuery] string name, [FromQuery] int hours)
         {
-            //foreach (var empl in _employees.DataBaseEmployess)
-            //{
-            //    if (empl.Id == id)
-            //    {
-            //        empl.Name = name;
-
-            //        return Ok();
-            //    }
-            //}
+            
             return Ok();
         }
         [HttpPost("order")]
@@ -68,7 +60,7 @@ namespace TaskWeb_2.Controllers
         {
             BaseSQL empl = new BaseSQL();
             return Ok(empl.Order.ToList());
-            // return Ok();
+           
         }
 
 

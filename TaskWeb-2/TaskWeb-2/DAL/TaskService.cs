@@ -21,9 +21,18 @@ namespace TaskWeb_2.DAL
             task.SaveChanges();
         }
 
-        public void Delete(int item)
+        public void Delete(int idtask)
         {
-            throw new NotImplementedException();
+            BaseSQL task = new BaseSQL();
+            foreach (var person in task.Order.ToList())
+            {
+                if (person.Id == idtask)
+                {
+                    task.Remove(person);
+                    task.SaveChanges();
+                }
+
+            }
         }
 
         public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
@@ -38,9 +47,10 @@ namespace TaskWeb_2.DAL
             return hours;
         }
 
-        public void UpData(int idcustomer, string fname, string lname)
+        public void UpData(int idtask, string fname, string lname)
         {
-            throw new NotImplementedException();
+            BaseSQL task = new BaseSQL();
+            
         }
     }
 }

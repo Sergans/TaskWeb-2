@@ -22,14 +22,33 @@ namespace TaskWeb_2.DAL
             empl.SaveChanges();
         }
 
-        public void Delete( int item)
+        public void Delete( int idemployer)
         {
-            throw new NotImplementedException();
+            BaseSQL empl = new BaseSQL();
+            foreach (var person in empl.Customer.ToList())
+            {
+                if (person.Id == idemployer)
+                {
+                    empl.Remove(person);
+                    empl.SaveChanges();
+                }
+
+            }
         }
 
-        public void UpData(int idcustomer, string fname, string lname)
+        public void UpData(int idemployer, string fname, string lname)
         {
-            throw new NotImplementedException();
+            BaseSQL empl = new BaseSQL();
+            foreach (var person in empl.Customer.ToList())
+            {
+                if (person.Id == idemployer)
+                {
+                    person.FirstName = fname;
+                    person.LastName = lname;
+                    empl.SaveChanges();
+                }
+
+            }
         }
     }
 }
