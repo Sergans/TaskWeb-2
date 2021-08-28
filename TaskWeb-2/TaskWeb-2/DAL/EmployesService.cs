@@ -22,12 +22,12 @@ namespace TaskWeb_2.DAL
             empl.SaveChanges();
         }
 
-        public int GetCost(int idcontract)
+        public void Delete( int item)
         {
             throw new NotImplementedException();
         }
 
-        public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
+        public void UpData(int idcustomer, string fname, string lname)
         {
             throw new NotImplementedException();
         }

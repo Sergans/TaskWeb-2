@@ -21,7 +21,7 @@ namespace TaskWeb_2.DAL
             task.SaveChanges();
         }
 
-        public int GetCost(int idcontract)
+        public void Delete(int item)
         {
             throw new NotImplementedException();
         }
@@ -38,6 +38,9 @@ namespace TaskWeb_2.DAL
             return hours;
         }
 
-        
+        public void UpData(int idcustomer, string fname, string lname)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

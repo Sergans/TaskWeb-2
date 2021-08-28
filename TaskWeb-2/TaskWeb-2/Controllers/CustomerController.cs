@@ -31,5 +31,17 @@ namespace TaskWeb_2.Controllers
             _repository.Create(customer);
             return Ok();
         }
+        [HttpDelete("delete")]
+        public IActionResult DelCustomer([FromQuery]int customer)
+        {
+            _repository.Delete(customer);
+            return Ok();
+        }
+        [HttpPut("put")]
+        public IActionResult PutCustomer([FromQuery] int customer, [FromQuery] string fname, [FromQuery] string lname)
+        {
+            _repository.UpData(customer,fname,lname);
+            return Ok();
+        }
     }
 }

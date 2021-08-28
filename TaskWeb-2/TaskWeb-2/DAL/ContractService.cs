@@ -22,6 +22,11 @@ namespace TaskWeb_2.DAL
             contr.SaveChanges();
         }
 
+        public void Delete(int item)
+        {
+            throw new NotImplementedException();
+        }
+
         public int GetCost(int idcontract)
         {
             var cost = 0;
@@ -45,6 +50,11 @@ namespace TaskWeb_2.DAL
                 customer.LastName = custom.CustomerLname;
             }
             return customer;
+        }
+
+        public void UpData(int idcustomer, string fname, string lname)
+        {
+            throw new NotImplementedException();
         }
     }
 }

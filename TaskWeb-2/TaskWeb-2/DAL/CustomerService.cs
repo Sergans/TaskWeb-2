@@ -21,14 +21,35 @@ namespace TaskWeb_2.DAL
             cust.SaveChanges();
         }
 
-        public int GetCost(int idcontract)
+        public void Delete(int idcustomer)
         {
-            throw new NotImplementedException();
+            BaseSQL cust = new BaseSQL();
+           
+            foreach (var person in cust.Customer.ToList())
+            {
+                if (person.Id == idcustomer)
+                {
+                    cust.Remove(person);
+                    cust.SaveChanges();
+                }
+               
+            }
+            
         }
 
-        public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
+        public void UpData(int idcustomer,string fname,string lname)
         {
-            throw new NotImplementedException();
+            BaseSQL cust = new BaseSQL();
+            foreach (var person in cust.Customer.ToList())
+            {
+                if (person.Id == idcustomer)
+                {
+                    person.FirstName = fname;
+                    person.LastName = lname;
+                    cust.SaveChanges();
+                }
+
+            }
         }
     }
 }
