@@ -18,14 +18,10 @@ namespace TaskWeb_2.Controllers
     [ApiController]
     public class ContractController : ControllerBase
     {
-        private readonly IRepository<ContractModel> _repository;
-        private readonly IRepository<TaskModel> _repositoryTask;
         private readonly IContractService _contrservice;
         private readonly ITaskService _taskservice;
         public ContractController(ContractService repository,TaskService repositorytask,ContractService contrserv,TaskService taskserv)
         {
-            _repositoryTask = repositorytask;
-            _repository = repository;
             _contrservice = contrserv;
             _taskservice = taskserv;
 
@@ -33,12 +29,12 @@ namespace TaskWeb_2.Controllers
         [HttpGet("get")]
         public IActionResult GetController()
         {
-            return Ok(_repository.AllGet());
+            return Ok(_contrservice.AllGet());
         }
         [HttpPost("add")]
         public IActionResult AddCustomer([FromBody] ContractModel contract)
         {
-            _repository.Create(contract);
+            _contrservice.Create(contract);
             return Ok();
         }
         [HttpGet("invoice")]
