@@ -10,7 +10,8 @@ namespace TaskWeb_2.Models
     {
         public DateTime DateCreate { get; set; }
         public DateTime DateClose { get; set; }
-        public CustomerModel Customer { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public decimal Sum { get; set; }
         
     }

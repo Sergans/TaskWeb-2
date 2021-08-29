@@ -45,7 +45,7 @@ namespace TaskWeb_2.Controllers
             var cost = _contrservice.GetCost(idcontract);
             var sum = hours * cost;
             var customer = _contrservice.GetCustomer(idcontract);
-            var invoice = new InvoiceModel() { Customer=customer,Sum=sum,DateCreate=from,DateClose=to};
+            var invoice = new InvoiceModel() { FirstName=customer.FirstName,LastName=customer.LastName, Sum=sum,DateCreate=from,DateClose=to};
             return Ok(invoice);
         }
 
