@@ -63,16 +63,12 @@ namespace TaskWeb_2.Controllers
                         {
                             empl.Order.Add(request);
                             empl.SaveChanges();
-                            return Ok("Добавлено");
+                            return Ok("ДОБАЛЕН ОТЧЕТ");
                         }
                     }
-                   
                 }
-
             }
-           
-           
-            return Ok("НЕТ СОТРУДНИКА ИЛИ КОНТРАКТА");
+          return Ok("НЕТ СОТРУДНИКА ИЛИ КОНТРАКТА");
         }
         [HttpGet("gettask")]
         public IActionResult GetTask()
