@@ -18,8 +18,10 @@ namespace TaskWeb_2.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IRepository<EmployessModel> _repository;
-        public EmployeesController(EmployesService repository)
+        private readonly IRepository<ContractModel> _contrrepository;
+        public EmployeesController(EmployesService repository,ContractService contrrepository)
         {
+            _contrrepository = contrrepository;
             _repository = repository;
         }
         [HttpGet("get")]
@@ -55,15 +57,22 @@ namespace TaskWeb_2.Controllers
             {
                 if (person.FirstName == idemployer.FirstName&&person.LastName==idemployer.LastName)
                 {
-                    empl.Order.Add(request);
-                    empl.SaveChanges();
-                    return Ok("Добавлено");
+                   foreach(var contr in _contrrepository.AllGet())
+                    {
+                        if (contr.Id == idcontract)
+                        {
+                            empl.Order.Add(request);
+                            empl.SaveChanges();
+                            return Ok("Добавлено");
+                        }
+                    }
+                   
                 }
 
             }
            
            
-            return Ok("НЕТ СОТРУДНИКА");
+            return Ok("НЕТ СОТРУДНИКА ИЛИ КОНТРАКТА");
         }
         [HttpGet("gettask")]
         public IActionResult GetTask()
