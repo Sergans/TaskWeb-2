@@ -25,7 +25,7 @@ namespace TaskWeb_2.DAL
         public void Delete( int idemployer)
         {
             BaseSQL empl = new BaseSQL();
-            foreach (var person in empl.Customer.ToList())
+            foreach (var person in empl.Employes.ToList())
             {
                 if (person.Id == idemployer)
                 {
@@ -39,7 +39,7 @@ namespace TaskWeb_2.DAL
         public void UpData(int idemployer, string fname, string lname)
         {
             BaseSQL empl = new BaseSQL();
-            foreach (var person in empl.Customer.ToList())
+            foreach (var person in empl.Employes.ToList())
             {
                 if (person.Id == idemployer)
                 {

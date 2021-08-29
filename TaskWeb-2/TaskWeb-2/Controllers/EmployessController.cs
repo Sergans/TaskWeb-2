@@ -36,13 +36,13 @@ namespace TaskWeb_2.Controllers
         [HttpDelete("delete")]
         public IActionResult DelEmployees([FromQuery] int id)
         {
-           
+            _repository.Delete(id);
             return Ok();
         }
         [HttpPut("put")]
-        public IActionResult PutEmployees([FromQuery] int id, [FromQuery] string name, [FromQuery] int hours)
+        public IActionResult PutEmployees([FromQuery] int id, [FromQuery] string fname, [FromQuery] string lname)
         {
-            
+            _repository.UpData(id, fname, lname);
             return Ok();
         }
         [HttpPost("order")]
