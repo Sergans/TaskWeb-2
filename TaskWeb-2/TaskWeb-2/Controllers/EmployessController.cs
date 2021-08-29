@@ -46,13 +46,19 @@ namespace TaskWeb_2.Controllers
             return Ok();
         }
         [HttpPost("order")]
-        public IActionResult AddOrderTask([FromQuery] int idemployer, [FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
-          
-        { var request = new TaskModel {IdEmployer=idemployer,IdContract=idcontract,Date=date, Hours = hours };
+        public IActionResult AddOrderTask([FromBody] EmployessModel idemployer, [FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
+        {
+            var request = new TaskModel {IdEmployer=idemployer.Id,IdContract=idcontract,Date=date, Hours = hours };
+            var person = _repository.AllGet();
             BaseSQL empl = new BaseSQL();
-            empl.Order.Add(request);
-            empl.SaveChanges();
-            
+
+            if (person.Contains(idemployer))
+            {
+                empl.Order.Add(request);
+                empl.SaveChanges();
+                return Ok("Добавлено");
+            }
+           
             return Ok();
         }
         [HttpGet("gettask")]
