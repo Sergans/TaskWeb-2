@@ -39,7 +39,7 @@ namespace TaskWeb_2.DAL
         {
             int hours = 0;
             BaseSQL task = new BaseSQL();
-            var taskperiod = (from period in task.Order where period.IdContract == idcontract select period).ToList();
+            var taskperiod = (from period in task.Order where period.IdContract == idcontract && fromTime<=period.Date select period).ToList();
             foreach (var sum in taskperiod)
             {
                 hours = hours + sum.Hours;

@@ -37,10 +37,15 @@ namespace TaskWeb_2.Controllers
             _contrservice.Create(contract);
             return Ok();
         }
+        [HttpDelete]
+        public IActionResult Delete([FromQuery] int idcontract)
+        {
+            _contrservice.Delete(idcontract);
+            return Ok();
+        }
         [HttpGet("invoice")]
         public IActionResult GetInvoice([FromQuery]DateTime from,[FromQuery]DateTime to,[FromQuery]int idcontract)
         {
-            
             var hours = _taskservice.GetHours(from, to, idcontract);
             var cost = _contrservice.GetCost(idcontract);
             var sum = hours * cost;

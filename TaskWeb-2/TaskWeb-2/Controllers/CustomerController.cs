@@ -43,5 +43,11 @@ namespace TaskWeb_2.Controllers
             _repository.UpData(customer,fname,lname);
             return Ok();
         }
+        [HttpGet("get/invoice")]
+        public IActionResult GetInvoiceCustomer([FromQuery] string fname, [FromQuery] string lname,[FromQuery]DateTime fromTime, [FromQuery] DateTime toTime)
+        {
+            
+            return Ok();
+        }
     }
 }

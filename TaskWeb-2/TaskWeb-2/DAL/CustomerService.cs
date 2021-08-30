@@ -37,6 +37,11 @@ namespace TaskWeb_2.DAL
             
         }
 
+        public int GetIdContract(string fname, string lname)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpData(int idcustomer,string fname,string lname)
         {
             BaseSQL cust = new BaseSQL();

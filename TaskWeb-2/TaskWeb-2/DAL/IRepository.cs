@@ -34,7 +34,7 @@ namespace TaskWeb_2.DAL
     }
     public interface ICustomerService : IRepository<CustomerModel>
     {
-
+        public int GetIdContract(string fname, string lname);
     }
     
 

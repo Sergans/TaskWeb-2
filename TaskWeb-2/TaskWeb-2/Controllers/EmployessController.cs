@@ -19,8 +19,10 @@ namespace TaskWeb_2.Controllers
     {
         private readonly IRepository<EmployessModel> _repository;
         private readonly IRepository<ContractModel> _contrrepository;
-        public EmployeesController(EmployesService repository,ContractService contrrepository)
+        private readonly IRepository<TaskModel> _taskrepository;
+        public EmployeesController(EmployesService repository,ContractService contrrepository,TaskService taskrepository)
         {
+            _taskrepository = taskrepository;
             _contrrepository = contrrepository;
             _repository = repository;
         }
@@ -63,7 +65,7 @@ namespace TaskWeb_2.Controllers
                         {
                             empl.Order.Add(request);
                             empl.SaveChanges();
-                            return Ok("ДОБАЛЕН ОТЧЕТ");
+                            return Ok("ДОБАЛЕН В ОТЧЕТ");
                         }
                     }
                 }
@@ -72,10 +74,14 @@ namespace TaskWeb_2.Controllers
         }
         [HttpGet("gettask")]
         public IActionResult GetTask()
+        {           
+            return Ok(_taskrepository.AllGet());
+        }
+        [HttpDelete("delete/task")]
+        public IActionResult DeleteTask([FromQuery]int idtask)
         {
-            BaseSQL empl = new BaseSQL();
-            return Ok(empl.Order.ToList());
-           
+            _taskrepository.Delete(idtask);
+            return Ok();
         }
 
 
