@@ -54,7 +54,7 @@ namespace TaskWeb_2.Controllers
         {
             var request = new TaskModel {IdEmployer=idemployer.Id,IdContract=idcontract,Date=date, Hours = hours };
             
-            BaseSQL empl = new BaseSQL();
+          
             foreach(var person in _repository.AllGet())
             {
                 if (person.FirstName == idemployer.FirstName&&person.LastName==idemployer.LastName)
@@ -63,9 +63,8 @@ namespace TaskWeb_2.Controllers
                     {
                         if (contr.Id == idcontract)
                         {
-                            empl.Order.Add(request);
-                            empl.SaveChanges();
-                            return Ok("ДОБАЛЕН В ОТЧЕТ");
+                            _taskrepository.Create(request);
+                             return Ok("ДОБАЛЕН В ОТЧЕТ");
                         }
                     }
                 }
