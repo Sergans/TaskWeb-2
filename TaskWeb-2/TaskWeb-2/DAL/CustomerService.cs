@@ -8,23 +8,20 @@ namespace TaskWeb_2.DAL
 {
     public class CustomerService : ICustomerService
     {
+        BaseSQL cust = new BaseSQL();
         public List<CustomerModel> AllGet()
         {
-            BaseSQL cust = new BaseSQL();
             return (cust.Customer.ToList());
         }
 
         public void Create(CustomerModel item)
         {
-            BaseSQL cust = new BaseSQL();
             cust.Customer.Add(item);
             cust.SaveChanges();
         }
 
         public void Delete(int idcustomer)
         {
-            BaseSQL cust = new BaseSQL();
-           
             foreach (var person in cust.Customer.ToList())
             {
                 if (person.Id == idcustomer)
@@ -44,7 +41,6 @@ namespace TaskWeb_2.DAL
 
         public void UpData(int idcustomer,string fname,string lname)
         {
-            BaseSQL cust = new BaseSQL();
             foreach (var person in cust.Customer.ToList())
             {
                 if (person.Id == idcustomer)

@@ -50,20 +50,21 @@ namespace TaskWeb_2.Controllers
             return Ok();
         }
         [HttpPost("order")]
-        public IActionResult AddOrderTask([FromBody] EmployessModel idemployer, [FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
+        public IActionResult AddOrderTask([FromQuery] string Fname,[FromQuery] string Lname, [FromQuery] int idcontract, [FromQuery] DateTime date, [FromQuery] int hours)
         {
-            var request = new TaskModel {IdEmployer=idemployer.Id,IdContract=idcontract,Date=date, Hours = hours };
-            
+            var raquestempl = new EmployessModel { FirstName = Fname, LastName = Lname };
+            var requesttask = new TaskModel {IdContract=idcontract,Date=date, Hours = hours };
+           
           
             foreach(var person in _repository.AllGet())
             {
-                if (person.FirstName == idemployer.FirstName&&person.LastName==idemployer.LastName)
+                if (person.FirstName == raquestempl.FirstName&&person.LastName== raquestempl.LastName)
                 {
                    foreach(var contr in _contrrepository.AllGet())
                     {
                         if (contr.Id == idcontract)
                         {
-                            _taskrepository.Create(request);
+                            _taskrepository.Create(requesttask);
                              return Ok("ДОБАЛЕН В ОТЧЕТ");
                         }
                     }

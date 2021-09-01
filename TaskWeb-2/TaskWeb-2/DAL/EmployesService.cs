@@ -9,22 +9,20 @@ namespace TaskWeb_2.DAL
 {
     public class EmployesService : IEmployesService
     {
+        BaseSQL empl = new BaseSQL();
         public List<EmployessModel> AllGet()
         {
-           BaseSQL empl = new BaseSQL();
            return(empl.Employes.ToList());
         }
 
         public void Create(EmployessModel item)
         {
-            BaseSQL empl = new BaseSQL();
             empl.Employes.Add(item);
             empl.SaveChanges();
         }
 
         public void Delete( int idemployer)
         {
-            BaseSQL empl = new BaseSQL();
             foreach (var person in empl.Employes.ToList())
             {
                 if (person.Id == idemployer)
@@ -38,7 +36,6 @@ namespace TaskWeb_2.DAL
 
         public void UpData(int idemployer, string fname, string lname)
         {
-            BaseSQL empl = new BaseSQL();
             foreach (var person in empl.Employes.ToList())
             {
                 if (person.Id == idemployer)

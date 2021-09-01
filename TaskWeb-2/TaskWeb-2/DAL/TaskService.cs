@@ -8,22 +8,20 @@ namespace TaskWeb_2.DAL
 {
     public class TaskService : ITaskService
     {
+        BaseSQL task = new BaseSQL();
         public List<TaskModel> AllGet()
         {
-            BaseSQL task = new BaseSQL();
             return (task.Order.ToList());
         }
 
         public void Create(TaskModel item)
         {
-            BaseSQL task = new BaseSQL();
             task.Order.Add(item);
             task.SaveChanges();
         }
 
         public void Delete(int idtask)
         {
-            BaseSQL task = new BaseSQL();
             foreach (var person in task.Order.ToList())
             {
                 if (person.Id == idtask)
@@ -38,7 +36,6 @@ namespace TaskWeb_2.DAL
         public int GetHours(DateTime fromTime, DateTime toTime, int idcontract)
         {
             int hours = 0;
-            BaseSQL task = new BaseSQL();
             var taskperiod = (from period in task.Order where (fromTime<=period.Date&&toTime>=period.Date) && period.IdContract == idcontract select period).ToList();
             foreach (var sum in taskperiod)
             {
@@ -49,7 +46,6 @@ namespace TaskWeb_2.DAL
 
         public void UpData(int idtask, string fname, string lname)
         {
-            BaseSQL task = new BaseSQL();
             
 
         }
