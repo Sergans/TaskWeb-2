@@ -26,8 +26,9 @@ namespace TaskWeb_2.Controllers
             return Ok(_repository.AllGet());
         }
         [HttpPost("add")]
-        public IActionResult AddCustomer([FromBody] CustomerModel customer)
+        public IActionResult AddCustomer([FromQuery] string fname, [FromQuery] string lname)
         {
+            CustomerModel customer = new CustomerModel { FirstName = fname, LastName = lname };
             _repository.Create(customer);
             return Ok();
         }

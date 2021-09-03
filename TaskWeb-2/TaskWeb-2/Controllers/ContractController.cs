@@ -8,6 +8,7 @@ using TaskWeb_2.Employees;
 using TaskWeb_2.DAL;
 using TaskWeb_2.Models;
 using Microsoft.EntityFrameworkCore;
+using TaskWeb_2.Customers;
 
 
 
@@ -20,10 +21,12 @@ namespace TaskWeb_2.Controllers
     {
         private readonly IContractService _contrservice;
         private readonly ITaskService _taskservice;
-        public ContractController(ContractService repository,TaskService repositorytask,ContractService contrserv,TaskService taskserv)
+        private readonly ICustomerService _customerservice;
+        public ContractController(ContractService repository,TaskService repositorytask,ContractService contrserv,TaskService taskserv,CustomerService customerservice)
         {
             _contrservice = contrserv;
             _taskservice = taskserv;
+            _customerservice = customerservice;
 
         }
         [HttpGet("get")]
@@ -33,8 +36,9 @@ namespace TaskWeb_2.Controllers
         }
         [HttpPost("add")]
         public IActionResult AddCustomer([FromBody] ContractModel contract)
-        {
+        { var customer = new CustomerModel { FirstName = contract.CustomerFname, LastName = contract.CustomerLname };
             _contrservice.Create(contract);
+            _customerservice.Create(customer);
             return Ok();
         }
         [HttpDelete]
