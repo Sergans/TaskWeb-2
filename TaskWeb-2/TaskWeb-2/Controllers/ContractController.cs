@@ -55,7 +55,7 @@ namespace TaskWeb_2.Controllers
             var sum = hours * cost;
             var customer = _contrservice.GetCustomer(idcontract);
             var invoice = new InvoiceModel() { FirstName=customer.FirstName,LastName=customer.LastName, Sum=sum,DateCreate=from,DateClose=to};
-            return Ok($"Счет на оплату за выполненик услуг по контракту c заказчиком: {invoice.FirstName} {invoice.LastName}\r\nВ период: c {invoice.DateCreate} по {invoice.DateClose}\r\nНа сумму:{invoice.Sum}");
+            return Ok($"Счет на оплату за выполнение услуг по контракту c заказчиком: {invoice.FirstName} {invoice.LastName}\r\nВ период: c {invoice.DateCreate} по {invoice.DateClose}\r\nНа сумму:{invoice.Sum}");
         }
 
     }
