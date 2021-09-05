@@ -17,6 +17,7 @@ namespace TaskWeb_2.DAL
         public DbSet<TaskModel> Order { get; set; }
         public DbSet<CustomerModel> Customer { get; set; }
         public DbSet<ContractModel> Contract { get; set; }
+        public DbSet<UserModel> User { get; set; }
 
         public BaseSQL()
         {
