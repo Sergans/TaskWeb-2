@@ -34,7 +34,7 @@ namespace TaskWeb_2.DAL
                 {
                     tokenResponse.Token = GenerateJwtToken(i, 1);
                     RefreshToken refreshToken = GenerateRefreshToken(i);
-                    pair.RefToken = refreshToken;
+                    pair.RefToken = refreshToken.ToString();
                     tokenResponse.RefreshToken = refreshToken.Token;
                     return tokenResponse;
                 }
@@ -65,11 +65,11 @@ namespace TaskWeb_2.DAL
             foreach (var pair in AllGet())
             {
                 i++;
-                if (string.CompareOrdinal(pair.RefToken.Token, token) == 0
-                    && pair.RefToken.IsExpired is false)
+                if (string.CompareOrdinal(pair.RefToken, token) == 0
+                   )
                 {
-                    pair.RefToken = GenerateRefreshToken(i);
-                    return pair.RefToken.Token;
+                    pair.RefToken = GenerateRefreshToken(i).ToString();
+                    return pair.RefToken;
                 }
             }
             return string.Empty;

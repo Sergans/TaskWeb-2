@@ -12,7 +12,7 @@ namespace TaskWeb_2.Models
         public string LastName { get; set; }
         public string Password { get; set; }
         public string Login { get; set; }
-        public RefreshToken RefToken { get; set; }
+        public string RefToken { get; set; }
     }
 }
 

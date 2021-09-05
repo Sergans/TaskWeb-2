@@ -21,6 +21,7 @@ namespace TaskWeb_2.DAL
 
         public BaseSQL()
         {
+            
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
