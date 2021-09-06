@@ -9,6 +9,7 @@ using TaskWeb_2.DAL;
 using TaskWeb_2.Models;
 using Microsoft.EntityFrameworkCore;
 using TaskWeb_2.Customers;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -27,8 +28,8 @@ namespace TaskWeb_2.Controllers
             _contrservice = contrserv;
             _taskservice = taskserv;
             _customerservice = customerservice;
-
         }
+        [Authorize]
         [HttpGet("get")]
         public IActionResult GetController()
         {
