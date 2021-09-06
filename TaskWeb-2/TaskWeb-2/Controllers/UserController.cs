@@ -22,6 +22,7 @@ namespace TaskWeb_2.Controllers
             _userService = userService;
         }
         [AllowAnonymous]
+        
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromQuery] string user, string password)
         {
@@ -58,14 +59,22 @@ namespace TaskWeb_2.Controllers
             Response.Cookies.Append("refreshToken", token, cookieOptions);
         }
         [HttpGet("get/user")]
+        [Authorize]
         public IActionResult Get()
         {
            return Ok(_userService.AllGet());
         }
         [HttpPost("create/user")]
-        public IActionResult Create([FromBody] UserModel user)
+        public IActionResult Create([FromQuery]string login,[FromQuery]string password,[FromQuery]string fname,[FromQuery] string lname)
         {
+            var user = new UserModel { Login = login, Password = password, FirstName = fname, LastName = lname };
             _userService.Create(user);
+            return Ok();
+        }
+        [HttpDelete("delete/user")]
+        public IActionResult Delete(int iduser)
+        {
+            _userService.Delete(iduser);
             return Ok();
         }
 

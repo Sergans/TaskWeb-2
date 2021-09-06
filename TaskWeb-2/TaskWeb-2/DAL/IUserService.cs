@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using TaskWeb_2.Models;
+using System.Security.Cryptography;
 
 namespace TaskWeb_2.DAL
 {
@@ -30,7 +31,7 @@ namespace TaskWeb_2.DAL
             foreach (var pair in AllGet())
             {
                 i++;
-                if (string.CompareOrdinal(pair.Login, user) == 0 && string.CompareOrdinal(pair.Password, password) == 0)
+                if (string.CompareOrdinal(pair.Login, user) == 0 && string.CompareOrdinal(pair.Password,HashPasw(password)) == 0)
                 {
                     tokenResponse.Token = GenerateJwtToken(i, 1);
                     RefreshToken refreshToken = GenerateRefreshToken(i);
@@ -84,6 +85,7 @@ namespace TaskWeb_2.DAL
 
         public void Create(UserModel item)
         {
+            item.Password = HashPasw(item.Password);
             user.User.Add(item);
             user.SaveChanges();
         }
@@ -109,6 +111,13 @@ namespace TaskWeb_2.DAL
         public void UpData(int item, string fname, string lname)
         {
             throw new NotImplementedException();
+        }
+        public string HashPasw(string pasword)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(pasword));
+            return Convert.ToBase64String(hash);
+
         }
     }
 }
